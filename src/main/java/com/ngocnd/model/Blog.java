@@ -1,8 +1,9 @@
 package com.ngocnd.model;
 
-import com.sun.istack.internal.NotNull;
+
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "blogs")

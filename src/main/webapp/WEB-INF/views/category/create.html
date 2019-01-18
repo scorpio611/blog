@@ -13,11 +13,10 @@
     <p th:text="${message}"></p>
 </th:block>
 <form method="post" th:action="@{/category/create}" th:object="${category}">
-    <input name="id" th:field="*{id}" th:type="hidden">
     <table>
         <tr>
             <td>Name:</td>
-            <td><input th:field="*{category}" type="text"/></td>
+            <td><input th:field="*{name}" type="text"/></td>
         </tr>
         <tr>
             <td></td>

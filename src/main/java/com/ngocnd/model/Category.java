@@ -13,7 +13,7 @@ public class Category {
     private long id;
 
     @NotNull
-    private String category;
+    private String name;
 
     @OneToMany(targetEntity = Blog.class)
     private List<Blog> blogs;
@@ -21,8 +21,8 @@ public class Category {
     public Category() {
     }
 
-    public Category(String category, List<Blog> blogs) {
-        this.category = category;
+    public Category(String name, List<Blog> blogs) {
+        this.name = name;
         this.blogs = blogs;
     }
 
@@ -30,16 +30,16 @@ public class Category {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public List<Blog> getBlogs() {

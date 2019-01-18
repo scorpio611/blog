@@ -40,12 +40,12 @@ public class CategoryController {
     }
 
     @PostMapping("/category/create")
-    public ModelAndView saveCategory(@ModelAttribute("category") Category category) {
+    public ModelAndView saveCustomer(@ModelAttribute("category") Category category) {
         categoryService.save(category);
 
         ModelAndView modelAndView = new ModelAndView("/category/create");
         modelAndView.addObject("category", new Category());
-        modelAndView.addObject("message", "New category created successfully");
+        modelAndView.addObject("message", "New customer created successfully");
         return modelAndView;
     }
 

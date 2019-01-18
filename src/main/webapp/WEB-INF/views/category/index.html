@@ -16,7 +16,7 @@
     </tr>
     <th:block th:each="category : ${categories}">
         <tr>
-            <td th:text="${category.category}"></td>
+            <td th:text="${category.name}"></td>
             <td><a th:href="@{/category/view/__${category.id}__}">Customers list</a></td>
             <td><a th:href="@{/category/edit/__${category.id}__ }">Edit</a></td>
             <td><a th:href="@{/category/delete/__${category.id}__ }">Delete</a></td>

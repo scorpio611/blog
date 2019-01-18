@@ -30,6 +30,18 @@ dependencies {
     compile group: 'org.thymeleaf', name: 'thymeleaf-spring4', version: '3.0.9.RELEASE'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.11'
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.11.12.RELEASE'
-    task stage(dependsOn: ['build', 'clean'])
-    build.mustRunAfter clean
+    compile 'com.github.jsimone:webapp-runner:8.5.11.3'
+    task stage() {
+        dependsOn clean, war
+    }
+    war.mustRunAfter clean
+
+    task copyToLib(type: Copy) {
+        into "$buildDir/server"
+        from(configurations.compile) {
+            include "webapp-runner*"
+        }
+    }
+
+    stage.dependsOn(copyToLib)
 }

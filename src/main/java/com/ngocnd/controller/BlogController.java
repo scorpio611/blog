@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @Controller
-@SessionAttributes("mycounter")
 public class BlogController {
     @Autowired
     BlogService blogService = new BlogServiceImpl();
@@ -43,8 +42,8 @@ public class BlogController {
     }
 
     @GetMapping("/")
-    public ModelAndView Blogs(@RequestParam("search") Optional<String> search, Pageable pageable, @ModelAttribute("mycounter") MyCounter myCounter) {
-        myCounter.increment();
+    public ModelAndView Blogs(@RequestParam("search") Optional<String> search, Pageable pageable) {
+
         Page<Blog> blogs;
         if (search.isPresent()) {
             blogs = blogService.findAllByTilte(search.get(), pageable);
@@ -101,11 +100,6 @@ public class BlogController {
     @ModelAttribute("categories")
     public Iterable<Category> categories() {
         return categoryService.findAll();
-    }
-
-    @ModelAttribute("mycounter")
-    public MyCounter setUpCounter() {
-        return new MyCounter();
     }
 
 

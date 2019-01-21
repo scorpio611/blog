@@ -22,7 +22,7 @@
             <td>Category:</td>
             <td>
                 <select th:field="*{category}">
-                    <option th:each="p : ${categories}" th:text="${p.category}" th:value="${p.id}"></option>
+                    <option th:each="p : ${categories}" th:text="${p.name}" th:value="${p.id}"></option>
                 </select>
             </td>
         </tr>

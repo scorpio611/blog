@@ -25,7 +25,7 @@
     <th:block th:each="blog : ${blogs}">
         <tr>
             <td th:text="${blog.title}"></td>
-            <td th:text="${blog.category.category}"></td>
+            <td th:text="${blog.category.name}"></td>
             <td th:text="${blog.content}"></td>
             <td><a th:href="@{/blog/edit/__${blog.id}__ }">Edit</a></td>
             <td><a th:href="@{/blog/delete/__${blog.id}__ }">Delete</a></td>
@@ -37,6 +37,8 @@
     <span th:text="${blogs.number +1}"></span>/<span th:text="${blogs.totalPages}"></span>
     <a th:href="@{'/customers'(page=${blogs.number + 1})}" th:if="${blogs.hasNext()}">Next</a>
 </div>
+<br>
+<h1 th:text="${'View count: ' + mycounter.getCount()}"></h1>
 <footer th:replace="layout :: footer"></footer>
 </body>
 </html>

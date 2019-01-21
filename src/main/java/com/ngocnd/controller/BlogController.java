@@ -2,6 +2,7 @@ package com.ngocnd.controller;
 
 import com.ngocnd.model.Blog;
 import com.ngocnd.model.Category;
+import com.ngocnd.model.MyCounter;
 import com.ngocnd.service.BlogService;
 import com.ngocnd.service.CategoryService;
 import com.ngocnd.service.impl.BlogServiceImpl;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes("mycounter")
 public class BlogController {
     @Autowired
     BlogService blogService = new BlogServiceImpl();
@@ -41,7 +43,8 @@ public class BlogController {
     }
 
     @GetMapping("/")
-    public ModelAndView Blogs(@RequestParam("search") Optional<String> search, Pageable pageable) {
+    public ModelAndView Blogs(@RequestParam("search") Optional<String> search, Pageable pageable, @ModelAttribute("mycounter") MyCounter myCounter) {
+        myCounter.increment();
         Page<Blog> blogs;
         if (search.isPresent()) {
             blogs = blogService.findAllByTilte(search.get(), pageable);
@@ -99,4 +102,11 @@ public class BlogController {
     public Iterable<Category> categories() {
         return categoryService.findAll();
     }
+
+    @ModelAttribute("mycounter")
+    public MyCounter setUpCounter() {
+        return new MyCounter();
+    }
+
+
 }

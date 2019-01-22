@@ -20,12 +20,12 @@
             <td><input th:field="*{title}" type="text"/></td>
         </tr>
         <tr>
-            <td>Province:</td>
+            <td>Category:</td>
             <td>
                 <select name="category">
                     <option th:each="p : ${categories}"
                             th:selected="(${p.id} == *{category.id})"
-                            th:text="${p.category}"
+                            th:text="${p.name}"
                             th:value="${p.id}"></option>
                 </select>
             </td>

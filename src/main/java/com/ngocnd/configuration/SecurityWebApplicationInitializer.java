@@ -1,4 +1,4 @@
-package com.ngocnd;
+package com.ngocnd.configuration;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

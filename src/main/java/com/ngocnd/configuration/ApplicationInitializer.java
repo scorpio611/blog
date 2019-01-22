@@ -1,5 +1,6 @@
-package com.ngocnd;
+package com.ngocnd.configuration;
 
+import com.ngocnd.configuration.ApplicationConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
